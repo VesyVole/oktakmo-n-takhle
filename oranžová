@@ -1,0 +1,58 @@
+ public partial class Form1 : Form
+    {
+        Random blep = new Random();
+        //690; 457
+        public Form1()
+        {
+            InitializeComponent();
+        }
+        int X=345;
+        int Y=228;
+        private void pictureBox1_Paint(object sender, PaintEventArgs e)
+        {
+            
+        }
+        int y;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            int X = blep.Next(54, 472);
+            int Y = blep.Next(54, 472);
+            pictureBox2.Top = X;
+            pictureBox2.Left = Y;
+            y++;
+            pocet2.Text = y.ToString();
+
+            if (y == 20)
+            {
+                timer1.Stop();
+                MessageBox.Show("Skončil jsi s "+x.ToString()+" body");
+                Close();
+            }
+            
+            Refresh();
+        }
+
+        private void pictureBox2_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.FillEllipse(Brushes.OrangeRed, 0, 0, 19, 19);
+        }
+        int x;
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            timer1.Start();
+            x++;
+            pocet.Text = x.ToString();
+            Refresh();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            timer1.Start();
+        }
+
+        private void pictureBox2_DoubleClick(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            MessageBox.Show("Cheater!");
+            Close();
+        }
